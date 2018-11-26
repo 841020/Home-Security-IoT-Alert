@@ -10,8 +10,7 @@ Home_Security_IoT_Alert是一個以樹莓派為中心,利用webhook接收HTTP請
 
 * [webhook](https://ifttt.com/applets/Zp6vmhJx-get-an-email-when-webhooks-publishes-a-new-trigger-or-action?term=webhook) - 接收樹莓派HTTP請求,
 
-
-###所需硬體
+### 所需硬體
   - 一個樹莓派
   - 16GB SD CARD
   - 一個PIR感測器
@@ -24,7 +23,7 @@ Home_Security_IoT_Alert是一個以樹莓派為中心,利用webhook接收HTTP請
   - 色碼電阻 100 歐姆
   - 杜邦線
 
-###使用的模組
+### 使用的模組
   - spidev-spi接腳的模組
   - time-時間模組
   - GPIO-GPIO接腳的模組
