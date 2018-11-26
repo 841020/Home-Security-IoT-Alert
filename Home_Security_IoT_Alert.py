@@ -56,7 +56,7 @@ while True:
                 GPIO.output(35,True)
                 #Send data to ifttt.com by HTTP Post Method, and ifttt sends e-mail to the user.
                 payload = {'value1': 'warring '}
-                r=requests.post("https://maker.ifttt.com", params=payload)
+                r=requests.post("https://ifttt.com/applets/Zp6vmhJx-get-an-email-when-webhooks-publishes-a-new-trigger-or-action?term=webhook", params=payload)
         #If KY-024 detects the bathroom door not closing
         else:
             #low voltage to infrared sensor(pin 37 output low voltage)
@@ -67,7 +67,7 @@ while True:
             GPIO.output(35,True)
             #Send data to ifttt.com by HTTP Post Method, and ifttt sends e-mail to the user.
             payload = {'value1': 'ky024 on '}
-            r=requests.post("https://maker.ifttt.com", params=payload)
+            r=requests.post("https://ifttt.com/applets/Zp6vmhJx-get-an-email-when-webhooks-publishes-a-new-trigger-or-action?term=webhook", params=payload)
         #If the magnetic sensor detects that the door and window are not opened
         else:
             #Buzzer has no alarm(pin 35 output low voltage)
@@ -78,7 +78,7 @@ while True:
             GPIO.output(35,True)
             #Send data to ifttt.com by HTTP Post Method, and ifttt sends e-mail to the user.
             payload = {'value2': 'gas on '}
-            r=requests.post("https://maker.ifttt.com", params=payload)
+            r=requests.post("https://ifttt.com/applets/Zp6vmhJx-get-an-email-when-webhooks-publishes-a-new-trigger-or-action?term=webhook", params=payload)
         #If the gas detector not detects a high concentration of gas
         else:
             #Buzzer has no alarm(pin 35 output low voltage)
@@ -89,7 +89,7 @@ while True:
             GPIO.output(35,True)
             #Send data to ifttt.com by HTTP Post Method, and ifttt sends e-mail to the user.
             payload = {'value3': 'fire on '}
-            r=requests.post("https://maker.ifttt.com", params=payload)
+            r=requests.post("https://ifttt.com/applets/Zp6vmhJx-get-an-email-when-webhooks-publishes-a-new-trigger-or-action?term=webhook", params=payload)
         #If the flame detector not detects the flame
         else:
             #Buzzer has no alarm(pin 35 output low voltage)
