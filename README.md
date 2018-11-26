@@ -1,16 +1,17 @@
 # Home_Security_IoT_Alert
-Home_Security_IoT_Alert是一個以樹莓派為中心,利用webhook接收HTTP請求,由webhook傳送e-mail通知用戶,達到居家安全警報的作用.
+Home_Security_IoT_Alert是一個以樹莓派為中心,利用webhook接收HTTP請求,由webhook傳送e-mail通知用戶,達到居家安全警報的專題.
 
 # 已知bug!
 
-  - 程式碼post請求的部份已經拿掉key,因此如果要使用webhook的功能需要先去IFTTT上註冊,設定e-mail,取得你專屬的key
+  - 程式碼post請求的部份已經拿掉key,因此要使用webhook的功能需要先去IFTTT上註冊,設定e-mail,取得你專屬的key
 
 
 ### 技術
 
-* [webhook](https://ifttt.com/applets/Zp6vmhJx-get-an-email-when-webhooks-publishes-a-new-trigger-or-action?term=webhook) - 接收樹莓派HTTP請求,
+* [webhook](https://ifttt.com/applets/Zp6vmhJx-get-an-email-when-webhooks-publishes-a-new-trigger-or-action?term=webhook) - 接收樹莓派HTTP請求,並設定e-mail接收預設的警報訊息
 
 ### 所需硬體
+
   - 一個樹莓派
   - 16GB SD CARD
   - 一個PIR感測器
@@ -24,6 +25,7 @@ Home_Security_IoT_Alert是一個以樹莓派為中心,利用webhook接收HTTP請
   - 杜邦線
 
 ### 使用的模組
+
   - spidev-spi接腳的模組
   - time-時間模組
   - GPIO-GPIO接腳的模組
