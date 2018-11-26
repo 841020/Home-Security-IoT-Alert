@@ -8,7 +8,6 @@ Home_Security_IoT_Alert是一個以樹莓派為中心,利用webhook接收HTTP請
 
 ### 技術
 
-* [樹莓派] -使用樹莓派接收感測器的數值
 * [webhook](https://ifttt.com/applets/Zp6vmhJx-get-an-email-when-webhooks-publishes-a-new-trigger-or-action?term=webhook) - Handling raspberry pie http requests by webhook
 
 
