@@ -13,21 +13,39 @@ Home_Security_IoT_Alert是一個以樹莓派為中心,利用webhook接收HTTP請
 ### 所需硬體
 
   - 一個樹莓派
-  - 16GB SD CARD
+  - 一個16GB SD CARD
   - 一個PIR感測器
   - 一個蜂鳴器
   - 一個火焰感測器
   - 兩個KY024感測器
-  - MCP3008 一個
-  - AIR QUALITY感測器一個
+  - 一個MCP3008
+  - 一個AIR QUALITY感測器
   - USB電源線
-  - 色碼電阻 100 歐姆
+  - 一個100歐姆色碼電阻
   - 杜邦線
-
-### 使用的模組 Module
-
+### Tech
+  - python
+  - Raspberry Pi
+  - http
+### 使用的python模組 Module
   - spidev-spi接腳的模組
+```sh
+$    pip install spidev
+```
   - time-時間模組
+```sh
+$    pip install times
+```
   - GPIO-GPIO接腳的模組
-  - os-系統的模組
+```sh
+$    pip install RPi.GPIO
+```
   - requests-HTTP協定的模組
+```sh
+$    pip install requests
+```
+  - os-系統的模組
+
+# 功能 Features!
+### 待辦事項 Todos
+#### 參考資源 Reference resource
