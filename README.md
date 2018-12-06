@@ -3,7 +3,7 @@ Home_Security_IoT_Alert是一個以樹莓派為中心,利用webhook接收HTTP請
 # 功能 Features!
 * 室內火焰偵測警報
 * 室內氣體偵測警報
-* 門窗感測警報
+* 門窗感測防盜警報
 * 浴室防滑警報
 
 # 已知bug!
