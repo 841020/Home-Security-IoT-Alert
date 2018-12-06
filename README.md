@@ -32,10 +32,6 @@ Home_Security_IoT_Alert是一個以樹莓派為中心,利用webhook接收HTTP請
 ```sh
 $    pip install spidev
 ```
-  - time-時間模組
-```sh
-$    pip install times
-```
   - GPIO-GPIO接腳的模組
 ```sh
 $    pip install RPi.GPIO
@@ -45,6 +41,7 @@ $    pip install RPi.GPIO
 $    pip install requests
 ```
   - os-系統的模組
+  - time-時間模組
 ### 待辦事項 Todos
 #### 參考資源 Reference resource
 [Raspberry Pi](https://www.w3schools.com/nodejs/nodejs_raspberrypi.asp)
