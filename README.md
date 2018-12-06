@@ -49,3 +49,4 @@ $    pip install requests
 # 功能 Features!
 ### 待辦事項 Todos
 #### 參考資源 Reference resource
+[Raspberry Pi](https://www.w3schools.com/nodejs/nodejs_raspberrypi.asp)
