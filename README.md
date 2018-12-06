@@ -24,11 +24,10 @@ Home_Security_IoT_Alert是一個以樹莓派為中心,利用webhook接收HTTP請
   - 色碼電阻 100 歐姆
   - 杜邦線
 
-### 使用的模組
+### 使用的模組 Module
 
   - spidev-spi接腳的模組
   - time-時間模組
   - GPIO-GPIO接腳的模組
   - os-系統的模組
-  - requests-HTTP的模組
-  
+  - requests-HTTP協定的模組
