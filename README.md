@@ -43,6 +43,7 @@ $    pip install requests
   - os-系統的模組
   - time-時間模組
 ### 待辦事項 Todos
-constant file觀念導入
+- constant file觀念導入
+- 使用insomnia架設api 接收post訊息
 #### 參考資源 Reference resource
 [Raspberry Pi](https://www.w3schools.com/nodejs/nodejs_raspberrypi.asp)
