@@ -29,23 +29,23 @@ def ReadADC(ch):
 pir_ch = 0
 ky024_ch = 1
 swich_ch = 2
-kobe_ch = 3
+gas_ch = 3
 fire_ch = 4
 # Define delay between readings
 delay = 1
 
 while True:
     try:
-        ky024 = ReadADC(ky024_ch)
         pir = ReadADC(pir_ch)
-        kobe = ReadADC(kobe_ch)
-        fire = ReadADC(fire_ch)
+        ky024 = ReadADC(ky024_ch)
         swich = ReadADC(swich_ch)
+        gas = ReadADC(gas_ch)
+        fire = ReadADC(fire_ch)
 
         print("pirmov:", pir,
               "ky024:", ky024,
               "swi:", swich,
-              "gas:", kobe,
+              "gas:", gas,
               "fire:", fire)
         # If the magnetic sensor detects the bathroom door closing
         if swich < 500:
@@ -84,7 +84,7 @@ while True:
             # Buzzer has no alarm(pin 35 output low voltage)
             GPIO.output(35, False)
         # If the gas detector detects a high concentration of gas
-        if kobe > 150:
+        if gas > 150:
             # Buzzer alarm(pin 35 output high voltage)
             GPIO.output(35, True)
             # Send data to ifttt.com by HTTP Post Method, and ifttt sends e-mail to the user.
