@@ -17,7 +17,7 @@ GPIO.setup(37, GPIO.OUT)
 
 
 def ReadADC(ch):
-    if ((ch > 7) or (ch < 0)):
+    if (ch > 7) or (ch < 0):
         return -1
     adc = spi.xfer2([1, (8+ch) << 4, 0])
     data = ((adc[1] & 3) << 8)+adc[2]
