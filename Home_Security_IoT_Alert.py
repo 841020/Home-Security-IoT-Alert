@@ -1,12 +1,13 @@
 #import module
+import RPi.GPIO as GPIO
+import requests
 import spidev
 import time
-import RPi.GPIO as GPIO
-import os
-import requests
+
 # open(bus, device) : open(X,Y) will open /dev/spidev-X.Y
 spi = spidev.SpiDev()
 spi.open(0, 0)
+
 # set up GPIO
 GPIO.setmode(GPIO.BOARD)
 # Define output
@@ -41,11 +42,11 @@ while True:
         fire = ReadADC(fire_ch)
         swich = ReadADC(swich_ch)
 
-        print("pirmov  : ", pir,
-              " ky024 : ", ky024,
+        print("pirmov:", pir,
+              "ky024:", ky024,
               "swi:", swich,
               "gas:", kobe,
-              "fire:", fire, )
+              "fire:", fire)
         # If the magnetic sensor detects the bathroom door closing
         if swich < 500:
             # Output voltage to infrared sensor(pin 37 output high voltage)
