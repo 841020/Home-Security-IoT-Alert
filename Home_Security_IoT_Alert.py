@@ -26,7 +26,7 @@ def ReadADC(ch):
 
 # Define sensor channels
 pir_ch = 0
-ky_ch = 1
+ky024_ch = 1
 swich_ch = 2
 kobe_ch = 3
 fire_ch = 4
@@ -35,14 +35,14 @@ delay = 1
 
 while True:
     try:
-        ky = ReadADC(ky_ch)
+        ky024 = ReadADC(ky024_ch)
         pir = ReadADC(pir_ch)
         kobe = ReadADC(kobe_ch)
         fire = ReadADC(fire_ch)
         swich = ReadADC(swich_ch)
 
         print("pirmov  : ", pir,
-              " ky024 : ", ky,
+              " ky024 : ", ky024,
               "swi:", swich,
               "gas:", kobe,
               "fire:", fire, )
@@ -71,7 +71,7 @@ while True:
             # low voltage to infrared sensor(pin 37 output low voltage)
             GPIO.output(37, False)
         # If the magnetic sensor detects that the door and window are opened
-        if ky > 500:
+        if ky024 > 500:
             # Buzzer alarm(pin 35 output high voltage)
             GPIO.output(35, True)
             # Send data to ifttt.com by HTTP Post Method, and ifttt sends e-mail to the user.
