@@ -44,6 +44,6 @@ $    pip install requests
   - time-時間模組
 ### 待辦事項 Todos
 - constant file觀念導入
-- 使用insomnia架設api 接收post訊息
+- 使用insomnia架設api 接收post訊息 將post訊息傳送給寄送email的程式
 #### 參考資源 Reference resource
 [Raspberry Pi](https://www.w3schools.com/nodejs/nodejs_raspberrypi.asp)
