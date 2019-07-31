@@ -1,20 +1,18 @@
-#import module
-import RPi.GPIO as GPIO
 import requests
-import spidev
 import time
+import json
 
-# open(bus, device) : open(X,Y) will open /dev/spidev-X.Y
+import spidev
+from RPi import GPIO
+
+
 spi = spidev.SpiDev()
 spi.open(0, 0)
 
-# set up GPIO
 GPIO.setmode(GPIO.BOARD)
-# Define output
-GPIO.setup(38, GPIO.OUT)
 GPIO.setup(35, GPIO.OUT)
 GPIO.setup(37, GPIO.OUT)
-# Read SPI data from MCP3008, Channel must be an integer
+GPIO.setup(38, GPIO.OUT)
 
 
 def ReadADC(ch):
@@ -25,88 +23,62 @@ def ReadADC(ch):
     return data
 
 
-# Define sensor channels
 pir_ch = 0
 ky024_ch = 1
-swich_ch = 2
+switch_ch = 2
 gas_ch = 3
 fire_ch = 4
-# Define delay between readings
+
 delay = 1
 
 while True:
     try:
         pir = ReadADC(pir_ch)
         ky024 = ReadADC(ky024_ch)
-        swich = ReadADC(swich_ch)
+        switch = ReadADC(switch_ch)
         gas = ReadADC(gas_ch)
         fire = ReadADC(fire_ch)
 
-        print("pirmov:", pir,
-              "ky024:", ky024,
-              "swi:", swich,
-              "gas:", gas,
-              "fire:", fire)
-        # If the magnetic sensor detects the bathroom door closing
-        if swich < 500:
-            # Output voltage to infrared sensor(pin 37 output high voltage)
+        print('pir:{}, ky024:{}, switch:{}, gas:{}, fire:{}'.format(pir, ky024,
+                                                                    switch, gas,
+                                                                    fire))
+        url = 'https://maker.ifttt.com/trigger/home_iot/with/key'
+        payload = {}
+
+        if switch < 500:
             GPIO.output(37, True)
-            # In-bath infrared sensor detects if there is activity in the bathroom
             if pir > 500:
-                # LED warning light is on(pin 38 output high voltage)
                 GPIO.output(38, True)
-                # Buzzer has no alarm(pin 35 output low voltage)
                 GPIO.output(35, False)
-            # In-bath infrared sensor detects if there not is activity in the bathroom
             else:
-                # LED warning light is close(pin 38 output low voltage)
                 GPIO.output(38, False)
-                # Buzzer alarm(pin 35 output high voltage)
                 GPIO.output(35, True)
-                # Send data to ifttt.com by HTTP Post Method, and ifttt sends e-mail to the user.
-                payload = {'value1': 'warring '}
-                r = requests.post(
-                    "https://ifttt.com/applets/Zp6vmhJx-get-an-email-when-webhooks-publishes-a-new-trigger-or-action?term=webhook", params=payload)
-        # If KY-024 detects the bathroom door not closing
+                payload['value1'] = 'Fall_detection: Someone may fall in the bathroom '
         else:
-            # low voltage to infrared sensor(pin 37 output low voltage)
             GPIO.output(37, False)
-        # If the magnetic sensor detects that the door and window are opened
+
         if ky024 > 500:
-            # Buzzer alarm(pin 35 output high voltage)
             GPIO.output(35, True)
-            # Send data to ifttt.com by HTTP Post Method, and ifttt sends e-mail to the user.
-            payload = {'value1': 'ky024 on '}
-            r = requests.post(
-                "https://ifttt.com/applets/Zp6vmhJx-get-an-email-when-webhooks-publishes-a-new-trigger-or-action?term=webhook", params=payload)
-        # If the magnetic sensor detects that the door and window are not opened
+            payload['value2'] = 'Security_system: The window is opened'
         else:
-            # Buzzer has no alarm(pin 35 output low voltage)
             GPIO.output(35, False)
-        # If the gas detector detects a high concentration of gas
+
         if gas > 150:
-            # Buzzer alarm(pin 35 output high voltage)
             GPIO.output(35, True)
-            # Send data to ifttt.com by HTTP Post Method, and ifttt sends e-mail to the user.
-            payload = {'value2': 'gas on '}
-            r = requests.post(
-                "https://ifttt.com/applets/Zp6vmhJx-get-an-email-when-webhooks-publishes-a-new-trigger-or-action?term=webhook", params=payload)
-        # If the gas detector not detects a high concentration of gas
+            payload['value3'] = 'Gas_detection: Indoor detection of gas'
         else:
-            # Buzzer has no alarm(pin 35 output low voltage)
             GPIO.output(35, False)
-        # If the flame detector detects the flame
+
         if fire < 500:
-            # Buzzer alarm(pin 35 output high voltage)
             GPIO.output(35, True)
-            # Send data to ifttt.com by HTTP Post Method, and ifttt sends e-mail to the user.
-            payload = {'value3': 'fire on '}
-            r = requests.post(
-                "https://ifttt.com/applets/Zp6vmhJx-get-an-email-when-webhooks-publishes-a-new-trigger-or-action?term=webhook", params=payload)
-        # If the flame detector not detects the flame
+            msg = 'fire_detection': 'Indoor detection of fire '
+            payload['value3'] = '{}{}'.format(payload.get('value3', ''), msg)
         else:
-            # Buzzer has no alarm(pin 35 output low voltage)
             GPIO.output(35, False)
+
+        payload = json.dumps(payload)
+        res = requests.post(url, params=payload)
         time.sleep(delay)
+
     except IOError:
         print("Error")
