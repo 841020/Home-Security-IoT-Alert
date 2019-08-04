@@ -13,7 +13,7 @@ Home_Security_IoT_Alert是一個以樹莓派為中心,利用webhook接收HTTP請
 * [HOW TO RUN A SCRIPT AS A SERVICE IN RASPBERRY PI - RASPBIAN JESSIE](http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/?fbclid=IwAR0WYwCgxtz1eEy-FjbpWr50aqoabVS2MkNYJ4UrLyqSpqFt-rRdiXUY9tc)- 在沒有螢幕的情況下,背景執行
 * python
 * Raspberry Pi
-* http
+
 ### 所需硬體
 
   - 一個樹莓派
@@ -27,23 +27,15 @@ Home_Security_IoT_Alert是一個以樹莓派為中心,利用webhook接收HTTP請
   - USB電源線
   - 一個100歐姆色碼電阻
   - 杜邦線
-### 使用的python模組 Module
-  - spidev-spi接腳的模組
+  
+
+### requirements install
 ```sh
-$    pip install spidev
+$    pip install -r requirements.txt
 ```
-  - GPIO-GPIO接腳的模組
-```sh
-$    pip install RPi.GPIO
-```
-  - requests-HTTP協定的模組
-```sh
-$    pip install requests
-```
-  - os-系統的模組
-  - time-時間模組
+
 ### 待辦事項 Todos
-- constant file觀念導入
-- 使用insomnia架設api 接收post訊息 將post訊息傳送給寄送email的程式
+- logging
+
 #### 參考資源 Reference resource
 [Raspberry Pi](https://www.w3schools.com/nodejs/nodejs_raspberrypi.asp)
