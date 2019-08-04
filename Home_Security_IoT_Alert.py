@@ -3,7 +3,7 @@ import time
 import json
 
 import spidev
-from RPi import GPIO
+import RPi.GPIO as GPIO
 
 
 spi = spidev.SpiDev()
@@ -71,7 +71,7 @@ while True:
 
         if fire < 500:
             GPIO.output(35, True)
-            msg = 'fire_detection': 'Indoor detection of fire '
+            msg = {'fire_detection': 'Indoor detection of fire '}
             payload['value3'] = '{}{}'.format(payload.get('value3', ''), msg)
         else:
             GPIO.output(35, False)
