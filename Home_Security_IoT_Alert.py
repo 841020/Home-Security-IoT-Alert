@@ -4,7 +4,13 @@ import json
 
 import spidev
 import RPi.GPIO as GPIO
-
+logging.basicConfig(level=logging.DEBUG,
+                            format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
+                            datefmt='%m-%d %H:%M',
+                            filename='/temp/myapp.log',
+                            filemode='w')
+        a = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+    logging.info('this is a loggging info message')
 
 spi = spidev.SpiDev()
 spi.open(0, 0)
@@ -53,7 +59,7 @@ while True:
             else:
                 GPIO.output(38, False)
                 GPIO.output(35, True)
-                payload['value1'] = 'Fall_detection: Someone may fall in the bathroom '
+                payload['value1'] = 'Fall_detection: Someone may fall in the bathroom'
         else:
             GPIO.output(37, False)
 
@@ -71,7 +77,7 @@ while True:
 
         if fire < 500:
             GPIO.output(35, True)
-            msg = {'fire_detection': 'Indoor detection of fire '}
+            msg = {'fire_detection': 'Indoor detection of fire'}
             payload['value3'] = '{}{}'.format(payload.get('value3', ''), msg)
         else:
             GPIO.output(35, False)
