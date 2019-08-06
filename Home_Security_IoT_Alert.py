@@ -13,7 +13,7 @@ class home_iot:
         logging.basicConfig(level=logging.DEBUG,
                             format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
                             datefmt='%m-%d %H:%M',
-                            filename='/temp/myapp.log',
+                            filename='iot.log',
                             filemode='w')
 
         self.date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -54,7 +54,6 @@ class home_iot:
                 print('pir:{}, ky024:{}, switch:{}, gas:{}, fire:{}'.format(pir, ky024,
                                                                             switch, gas,
                                                                             fire))
-                url = 'https://maker.ifttt.com/trigger/home_iot/with/key'
                 payload = dict()
 
                 if switch < 500:
@@ -92,7 +91,8 @@ class home_iot:
                         payload.get('value3', ''), msg)
                 else:
                     GPIO.output(35, False)
-
+                
+                url = 'https://maker.ifttt.com/trigger/home_iot/with/key'
                 res = requests.post(url, json=payload)
                 time.sleep(1)
 

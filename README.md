@@ -7,6 +7,7 @@ Home_Security_IoT_Alert是一個以樹莓派為中心,利用webhook接收HTTP請
 * 浴室防滑警報
 * 警報日誌
 * 即時email通知
+* 腳本運行
 
 # 已知bug!
   - 程式碼post請求的部份已經拿掉key,因此要使用webhook的功能需要先去IFTTT上註冊,設定e-mail,取得你專屬的key
