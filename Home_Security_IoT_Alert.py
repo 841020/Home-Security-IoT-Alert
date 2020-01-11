@@ -87,11 +87,10 @@ class home_iot:
                     GPIO.output(35, True)
                     logging.info('{}-Indoor detection of fire'.format(self.date))
                     msg = {'fire_detection': 'Indoor detection of fire'}
-                    payload['value3'] = '{}{}'.format(
-                        payload.get('value3', ''), msg)
+                    payload['value3'] = '{}{}'.format(payload.get('value3', ''), msg)
                 else:
                     GPIO.output(35, False)
-                
+
                 url = 'https://maker.ifttt.com/trigger/home_iot/with/key'
                 res = requests.post(url, json=payload)
                 time.sleep(1)
