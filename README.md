@@ -1,5 +1,5 @@
-# Home_Security_IoT_Alert
-Home_Security_IoT_Alert是一個以樹莓派為中心,利用webhook接收HTTP請求,由webhook傳送e-mail通知用戶,達到居家安全警報的專題.
+# smart_home
+smart_home是一個以樹莓派為中心,利用webhook接收HTTP請求,由webhook傳送e-mail通知用戶,達到居家安全警報的專題.
 # 功能 Features!
 * 室內火焰偵測警報
 * 室內氣體偵測警報
