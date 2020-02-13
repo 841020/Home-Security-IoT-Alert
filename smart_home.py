@@ -7,7 +7,7 @@ import spidev
 import RPi.GPIO as GPIO
 
 
-class home_iot:
+class smart_home:
     def __init__(self):
 
         logging.basicConfig(level=logging.DEBUG,
@@ -15,8 +15,6 @@ class home_iot:
                             datefmt='%m-%d %H:%M',
                             filename='iot.log',
                             filemode='w')
-
-        self.date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
 
         self.spi = spidev.SpiDev()
         self.spi.open(0, 0)
@@ -32,27 +30,29 @@ class home_iot:
         GPIO.setup(37, GPIO.OUT)
         GPIO.setup(38, GPIO.OUT)
 
-    def ReadADC(self, ch):
-        if (ch > 7) or (ch < 0):
-            return -1
-
-        adc = self.spi.xfer2([1, (8+ch) << 4, 0])
-        data = ((adc[1] & 3) << 8)+adc[2]
-
-        return data
 
     def process(self):
+        def ReadADC(ch):
+            if (ch > 7) or (ch < 0):
+                return -1
 
+            adc = self.spi.xfer2([1, (8+ch) << 4, 0])
+            data = ((adc[1] & 3) << 8)+adc[2]
+
+            return data
         while True:
+            date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
             try:
-                pir = self.ReadADC(self.pir_ch)
-                ky024 = self.ReadADC(self.ky024_ch)
-                switch = self.ReadADC(self.switch_ch)
-                gas = self.ReadADC(self.gas_ch)
-                fire = self.ReadADC(self.fire_ch)
+                pir = ReadADC(self.pir_ch)
+                ky024 = ReadADC(self.ky024_ch)
+                switch = ReadADC(self.switch_ch)
+                gas = ReadADC(self.gas_ch)
+                fire = ReadADC(self.fire_ch)
 
-                print('pir:{}, ky024:{}, switch:{}, gas:{}, fire:{}'.format(pir, ky024,
-                                                                            switch, gas,
+                print('pir:{}, ky024:{}, switch:{}, gas:{}, fire:{}'.format(pir, 
+                                                                            ky024,
+                                                                            switch, 
+                                                                            gas,
                                                                             fire))
                 payload = dict()
 
@@ -64,35 +64,37 @@ class home_iot:
                     else:
                         GPIO.output(38, False)
                         GPIO.output(35, True)
-                        logging.info('{}-Someone may fall in the bathroom'.format(self.date))
+                        logging.info('{}-Someone may fall in the bathroom'.format(date))
                         payload['value1'] = 'Fall_detection: Someone may fall in the bathroom'
                 else:
                     GPIO.output(37, False)
 
                 if ky024 > 500:
                     GPIO.output(35, True)
-                    logging.info('{}-Security_system: The window is opened'.format(self.date))
+                    logging.info('{}-Security_system: The window is opened'.format(date))
                     payload['value2'] = 'Security_system: The window is opened'
                 else:
                     GPIO.output(35, False)
 
                 if gas > 150:
                     GPIO.output(35, True)
-                    logging.info('{}-Indoor detection of gas'.format(self.date))
+                    logging.info('{}-Indoor detection of gas'.format(date))
                     payload['value3'] = 'Gas_detection: Indoor detection of gas'
                 else:
                     GPIO.output(35, False)
 
                 if fire < 500:
                     GPIO.output(35, True)
-                    logging.info('{}-Indoor detection of fire'.format(self.date))
+                    logging.info('{}-Indoor detection of fire'.format(date))
                     msg = {'fire_detection': 'Indoor detection of fire'}
                     payload['value3'] = '{}{}'.format(payload.get('value3', ''), msg)
                 else:
                     GPIO.output(35, False)
 
-                url = 'https://maker.ifttt.com/trigger/home_iot/with/key'
+                url = 'https://maker.ifttt.com/trigger/smart_home/with/key/'
                 res = requests.post(url, json=payload)
+                if res.text != "Congratulations! You've fired the smart_home event":
+                    raise Exception('http request failed')
                 time.sleep(1)
 
             except Exception as e:
