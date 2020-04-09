@@ -1,9 +1,9 @@
 # smart_home
 
-smart home 使用樹莓派,連接感測器收集資料,使用 webhook api 發送電子郵件通知訂閱用戶,實現居家安全監控。
+- smart home 使用樹莓派,連接感測器收集資料,使用 webhook api 發送電子郵件通知訂閱用戶,實現居家安全監控。
 
-Smart home uses a Raspberry Pi, connects to sensors to collect data,
-and uses webhook api to send emails to notify subscribers to achieve home security monitoring.
+- Smart home uses a Raspberry Pi, connects to sensors to collect data,<br>
+  and uses webhook api to send emails to notify subscribers to achieve home security monitoring.
 
 # 功能 Features!
 
@@ -18,7 +18,7 @@ and uses webhook api to send emails to notify subscribers to achieve home securi
 ### 技術
 
 - [webhook](https://ifttt.com/applets/Zp6vmhJx-get-an-email-when-webhooks-publishes-a-new-trigger-or-action?term=webhook) - 註冊帳號並預設 email 及警報內容，取得專屬 url key，並添加 http request
-- [RUN A SCRIPT AS A SERVICE IN RASPBERRY PI](http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/?fbclid=IwAR0WYwCgxtz1eEy-FjbpWr50aqoabVS2MkNYJ4UrLyqSpqFt-rRdiXUY9tc)- 腳本運行
+- [RUN A SCRIPT AS A SERVICE IN RASPBERRY PI](http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/?fbclid=IwAR0WYwCgxtz1eEy-FjbpWr50aqoabVS2MkNYJ4UrLyqSpqFt-rRdiXUY9tc) - 腳本運行
 - Python3
 - Raspberry Pi
 - HTTP POST
