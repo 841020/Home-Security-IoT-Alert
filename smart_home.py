@@ -99,3 +99,7 @@ class smart_home:
 
             except Exception as e:
                 print("{}".format(e))
+
+
+if __name__ == "__main__":
+    smart_home().process()
