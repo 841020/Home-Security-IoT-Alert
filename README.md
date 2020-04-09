@@ -17,11 +17,11 @@
 
 ### 技術
 
-- [webhook](https://ifttt.com/applets/Zp6vmhJx-get-an-email-when-webhooks-publishes-a-new-trigger-or-action?term=webhook) - 註冊帳號並預設 email 及警報內容，取得專屬 url key，並添加 http request
+- [webhook](https://ifttt.com/applets/Zp6vmhJx-get-an-email-when-webhooks-publishes-a-new-trigger-or-action?term=webhook) - 註冊帳號並預設 email 及警報內容，取得專屬 url key，將 HTTP Request 加上 url key
 - [RUN A SCRIPT AS A SERVICE IN RASPBERRY PI](http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/?fbclid=IwAR0WYwCgxtz1eEy-FjbpWr50aqoabVS2MkNYJ4UrLyqSpqFt-rRdiXUY9tc) - 腳本運行
 - Python3
 - Raspberry Pi
-- HTTP POST
+- HTTP Request
 
 ### 所需硬體
 
