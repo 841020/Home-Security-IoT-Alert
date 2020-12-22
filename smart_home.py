@@ -9,12 +9,14 @@ import RPi.GPIO as GPIO
 
 class smart_home:
     def __init__(self):
-
-        logging.basicConfig(level=logging.DEBUG,
-                            format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
-                            datefmt='%m-%d %H:%M',
-                            filename='iot.log',
-                            filemode='w')
+        dt = {
+            'level': logging.DEBUG,
+            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
+            'datefmt': '%m-%d %H:%M',
+            'filename': 'iot.log',
+            'filemode': 'w'
+        }
+        logging.basicConfig(**dt)
 
         self.spi = spidev.SpiDev()
         self.spi.open(0, 0)
