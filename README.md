@@ -8,7 +8,6 @@
 
 # 功能 Features!
 
-- 腳本運行
 - 室內火焰偵測警報
 - 室內氣體偵測警報
 - 門窗感測防盜警報
@@ -21,8 +20,8 @@
 - [webhook](https://ifttt.com/applets/Zp6vmhJx-get-an-email-when-webhooks-publishes-a-new-trigger-or-action?term=webhook) - 註冊帳號並預設 email 及警報內容，取得專屬 url key，將 HTTP Request 加上 url key
 - [RUN A SCRIPT AS A SERVICE IN RASPBERRY PI](http://www.diegoacuna.me/how-to-run-a-script-as-a-service-in-raspberry-pi-raspbian-jessie/?fbclid=IwAR0WYwCgxtz1eEy-FjbpWr50aqoabVS2MkNYJ4UrLyqSpqFt-rRdiXUY9tc) - 腳本運行
 - Python3
-- Raspberry Pi
-- HTTP Request
+- Raspberry Pi 3
+- HTTP
 
 ### 所需硬體
 
