@@ -1,9 +1,10 @@
 # smart_home
 
-- smart home 使用樹莓派,連接感測器收集資料,使用 webhook api 發送電子郵件通知訂閱用戶,實現居家安全監控。
-
-- Smart home uses a Raspberry Pi, connects to sensors to collect data,<br>
-  and uses webhook api to send emails to notify subscribers to achieve home security monitoring.
+- Develop and deploy server on Raspberry Pi.
+- The sensor sends an analog signal through the gpio pin.
+- ADC (Analogue-to-digital converter) sends the processed signal to the server.
+- The server performs corresponding follow-up actions according to the value.
+- Publish new triggers or actions by Webhooks api on IFTTT
 
 # 功能 Features!
 
@@ -46,3 +47,4 @@ $    pip install -r requirements.txt
 #### 參考資源 Reference resource
 
 [Raspberry Pi](https://www.w3schools.com/nodejs/nodejs_raspberrypi.asp)
+[ADC reference](https://atceiling.blogspot.com/2014/04/raspberry-pi-mcp3008.html)
