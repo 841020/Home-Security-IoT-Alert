@@ -45,5 +45,5 @@ $    pip install -r requirements.txt
 
 #### 參考資源 Reference resource
 
-[Raspberry Pi](https://www.w3schools.com/nodejs/nodejs_raspberrypi.asp)
+[Raspberry Pi](https://www.w3schools.com/nodejs/nodejs_raspberrypi.asp)<br>
 [ADC reference](https://atceiling.blogspot.com/2014/04/raspberry-pi-mcp3008.html)
